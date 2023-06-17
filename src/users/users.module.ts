@@ -8,9 +8,11 @@ import { UserSchema } from './user.entity';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost/movie-api'),
-    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]), // Исправленный импорт User и UserSchema
+    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
   ],
   controllers: [UsersController],
   providers: [UsersService, UserRepository],
+  exports: [UsersService], // Добавьте экспорт UsersService
 })
 export class UsersModule {}
+
